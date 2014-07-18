@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+    
+		<property name="hibernate.dialect"> org.hibernate.dialect.DerbyTenSevenDialect </property>    
+		<property name="hibernate.connection.driver_class"> org.apache.derby.jdbc.EmbeddedDriver </property>
+		<property name="hibernate.connection.username">poweruser</property>
+		<property name="hibernate.connection.password">poweruser</property>
+		<property name="hibernate.current_session_context_class">managed</property>
+		
+        <!-- helper debug settings -->
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.format_sql">false</property>
+        
+        <mapping class="org.training.itracker.beans.Issue"></mapping>
+		<mapping class="org.training.itracker.beans.User"></mapping>
+		<mapping class="org.training.itracker.beans.Comment"></mapping>
+		<mapping class="org.training.itracker.beans.Project"></mapping>
+		<mapping class="org.training.itracker.beans.Build"></mapping>
+		<mapping class="org.training.itracker.beans.Status"></mapping>
+		<mapping class="org.training.itracker.beans.Resolution"></mapping>
+		
+    </session-factory>
+</hibernate-configuration>
