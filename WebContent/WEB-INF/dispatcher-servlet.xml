@@ -25,17 +25,17 @@
 	<context:annotation-config />
 
 	<!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)  -->
-<!--	<context:component-scan base-package="org.training.itracker.controllers" />
-	<context:component-scan base-package="org.training.itracker.controllers.issue" />
+	
+	<context:component-scan base-package="org.training.itracker.controllers" />
+	<!--<context:component-scan base-package="org.training.itracker.controllers.issue" />
 	<context:component-scan base-package="org.training.itracker.controllers.resolution" />
 	<context:component-scan base-package="org.training.itracker.dao" />
-	<context:component-scan base-package="org.training.itracker.service" />-->
-
-<!-- 
+	<context:component-scan base-package="org.training.itracker.service" />
+-->
 	<mvc:annotation-driven />
-	<mvc:default-servlet-handler />-->
+	<mvc:default-servlet-handler />
 
-<!-- 
+	<!-- 
 	<bean id="buildService" class="org.training.itracker.service.BuildServiceImpl" >
 		<property name="buildDAO" ref="buildDAO" />
 	</bean>
@@ -56,9 +56,9 @@
 	</bean>
 	<bean id="userService" class="org.training.itracker.service.UserServiceImpl" >
 		<property name="userDAO" ref="userDAO" />
-	</bean>
- -->
+	</bean> -->
+ 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
-	<!--<import resource="data.xml" />-->
+	<import resource="data.xml" />
 
 </beans>

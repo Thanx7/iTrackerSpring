@@ -19,17 +19,18 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Менеджер транзакций -->
-	<bean id="transactionManager"
+<!--	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean id="buildDAO" class="org.training.itracker.dao.BuildDAOImpl" />
+ 
+	<bean id="buildDAO" class="org.training.itracker.dao.BuildDAOImpl" /> 
 	<bean id="commentDAO" class="org.training.itracker.dao.CommentDAOImpl" />
 	<bean id="issueDAO" class="org.training.itracker.dao.IssueDAOImpl" />
 	<bean id="projectDAO" class="org.training.itracker.dao.ProjectDAOImpl" />
 	<bean id="resolutionDAO" class="org.training.itracker.dao.ResolutionDAOImpl" />
 	<bean id="statusDAO" class="org.training.itracker.dao.StatusDAOImpl" />
-	<bean id="userDAO" class="org.training.itracker.dao.UserDAOImpl" />
+	<bean id="userDAO" class="org.training.itracker.dao.UserDAOImpl" />-->
 
 </beans>
