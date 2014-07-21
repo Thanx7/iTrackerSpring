@@ -14,13 +14,13 @@ public class BuildServiceImpl implements BuildService {
 	@Autowired
 	private BuildDAO buildDAO;
 
+	public void setBuildDAO(BuildDAO buildDAO) {
+		this.buildDAO = buildDAO;
+	}
+
 	@Transactional
 	public Build getBuild(int id) {
 		return buildDAO.getBuild(id);
-	}
-
-	public void setBuildDAO(BuildDAO buildDAO) {
-		this.buildDAO = buildDAO;
 	}
 
 	@Transactional

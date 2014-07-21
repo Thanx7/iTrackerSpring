@@ -1,9 +1,7 @@
 package org.training.itracker.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,10 +13,8 @@ import org.training.itracker.constants.Constants;
 import org.training.itracker.utilities.DAOException;
 import org.training.itracker.utilities.Validation;
 
-@Repository
+@Repository(value = "userDAO")
 public class UserDAOImpl implements UserDAO {
-	@SuppressWarnings("unused")
-	private static final Logger LOGGER = Logger.getLogger(UserDAOImpl.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -56,15 +52,15 @@ public class UserDAOImpl implements UserDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-		List<User> users = new ArrayList<>();
 
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			users = session.createCriteria(User.class).list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		System.out.println(sessionFactory.getCurrentSession()
+				.createCriteria(User.class).list());
+		System.out.println("sessionFactory: " + sessionFactory);
+		System.out.println("sessionFactory.getCurrentSession(): "
+				+ sessionFactory.getCurrentSession());
+		System.out.println();
 
-		return users;
+		return sessionFactory.getCurrentSession().createCriteria(User.class)
+				.list();
 	}
 }

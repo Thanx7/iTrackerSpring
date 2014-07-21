@@ -19,25 +19,12 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
-
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
-	<context:annotation-config />
-
-	<context:component-scan base-package="org.training.itracker.controllers" />
-	<context:component-scan base-package="org.training.itracker.controllers.issue" />
-	<context:component-scan base-package="org.training.itracker.controllers.resolution" />
-	<context:component-scan base-package="org.training.itracker.dao" />
-	<context:component-scan base-package="org.training.itracker.service" />
-
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
-	<bean id="applicationContextProvider" class="org.training.itracker.utilities.ApplicationContextProvider"></bean>
+	<context:annotation-config />
+	<context:component-scan base-package="org.training.itracker.dao" />
+	<context:component-scan base-package="org.training.itracker.service" />
 
 	<bean id="buildService" class="org.training.itracker.service.BuildServiceImpl" >
 		<property name="buildDAO" ref="buildDAO" />
@@ -58,10 +45,10 @@
 		<property name="statusDAO" ref="statusDAO" />
 	</bean>
 	<bean id="userService" class="org.training.itracker.service.UserServiceImpl" >
-		<property name="userDAO" ref="userDAO" />
-	</bean>
+		<property name="userDAO" ref="userDAO" />		
+ 	</bean>
  
-	<bean id="buildDAO" class="org.training.itracker.dao.BuildDAOImpl" /> 
+ 	<bean id="buildDAO" class="org.training.itracker.dao.BuildDAOImpl" /> 
 	<bean id="commentDAO" class="org.training.itracker.dao.CommentDAOImpl" />
 	<bean id="issueDAO" class="org.training.itracker.dao.IssueDAOImpl" />
 	<bean id="projectDAO" class="org.training.itracker.dao.ProjectDAOImpl" />
@@ -69,11 +56,18 @@
 	<bean id="statusDAO" class="org.training.itracker.dao.StatusDAOImpl" />
 	<bean id="userDAO" class="org.training.itracker.dao.UserDAOImpl" />
 
-	<bean id="contextUtils" class="org.training.itracker.listener.ServletContextUtils" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+ 
 	<bean id="derbypar" class="java.lang.String">
 		<constructor-arg value="jdbc:derby:" />
 	</bean>
+
+	<bean id="contextUtils" class="org.training.itracker.listener.ServletContextUtils" />
 
 	<bean id="realPath" factory-bean="contextUtils" factory-method="getRealPath" />
 

@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.training.itracker.constants.Constants;
 
 @Controller
 public class InitController extends AbstractController {
 
-	@RequestMapping(value = "/MainController")
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected void performTask(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
