@@ -15,6 +15,10 @@ public class IssueServiceImpl implements IssueService {
 	@Autowired
 	private IssueDAO issueDAO;
 
+	public void setIssueDAO(IssueDAO issueDAO) {
+		this.issueDAO = issueDAO;
+	}
+
 	@Transactional
 	public Issue getIssue(int id) {
 		return issueDAO.getIssue(id);

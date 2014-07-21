@@ -19,6 +19,10 @@ public class BuildServiceImpl implements BuildService {
 		return buildDAO.getBuild(id);
 	}
 
+	public void setBuildDAO(BuildDAO buildDAO) {
+		this.buildDAO = buildDAO;
+	}
+
 	@Transactional
 	public List<Build> getBuildList(int projectId) {
 		return buildDAO.getBuildList(projectId);

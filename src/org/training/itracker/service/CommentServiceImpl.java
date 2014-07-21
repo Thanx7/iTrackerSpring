@@ -12,6 +12,10 @@ public class CommentServiceImpl implements CommentService {
 	@Autowired
 	private CommentDAO commentDAO;
 
+	public void setCommentDAO(CommentDAO commentDAO) {
+		this.commentDAO = commentDAO;
+	}
+
 	@Transactional
 	public void saveComment(Comment comment) {
 		commentDAO.saveComment(comment);

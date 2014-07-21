@@ -14,6 +14,10 @@ public class ResolutionServiceImpl implements ResolutionService {
 	@Autowired
 	private ResolutionDAO resolutionDAO;
 
+	public void setResolutionDAO(ResolutionDAO resolutionDAO) {
+		this.resolutionDAO = resolutionDAO;
+	}
+
 	@Transactional
 	public Resolution getResolution(int id) {
 		return resolutionDAO.getResolution(id);

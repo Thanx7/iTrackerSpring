@@ -14,6 +14,10 @@ public class StatusServiceImpl implements StatusService {
 	@Autowired
 	private StatusDAO statusDAO;
 
+	public void setStatusDAO(StatusDAO statusDAO) {
+		this.statusDAO = statusDAO;
+	}
+
 	@Transactional
 	public Status getStatus(int id) {
 		return statusDAO.getStatus(id);

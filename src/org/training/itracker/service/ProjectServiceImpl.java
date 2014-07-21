@@ -14,6 +14,10 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDAO projectDAO;
 
+	public void setProjectDAO(ProjectDAO projectDAO) {
+		this.projectDAO = projectDAO;
+	}
+
 	@Transactional
 	public Project getProject(int id) {
 		return projectDAO.getProject(id);
