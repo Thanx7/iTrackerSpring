@@ -1,3 +1,7 @@
+issueTracker-3.0
+Important:
+Spring MVC implemented
+
 issueTracker-2.4
 Important:
 1. The following life cycle scheme is partly implemented:
