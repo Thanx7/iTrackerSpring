@@ -23,7 +23,7 @@
                         </div>
                     </c:if>
                     <c:if test="${empty user}">
-                        <form class="form-inline pull-right" role="form" id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
+                        <form class="form-inline pull-right" id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                         	<div class="form-group">
                             	<input class="form-control" name="email" type="text" value="ilya@site.com"
                             		required data-bv-notempty-message="email is required">

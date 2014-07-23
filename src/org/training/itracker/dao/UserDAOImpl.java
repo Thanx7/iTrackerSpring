@@ -20,46 +20,24 @@ public class UserDAOImpl implements UserDAO {
 	private SessionFactory sessionFactory;
 
 	public User getUser(int id) {
-		User user = null;
-
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(User.class);
-			criteria.add(Restrictions.eq(Constants.ID, id));
-			user = (User) criteria.uniqueResult();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("id", id));
+		User user = (User) criteria.uniqueResult();
 		return user;
 	}
 
 	public User getUser(String email, String password) throws DAOException {
-		User user = null;
-
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			Criteria criteria = session.createCriteria(User.class);
-			criteria.add(Restrictions.eq(Constants.EMAIL, email));
-			user = (User) criteria.uniqueResult();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq(Constants.EMAIL, email));
+		User user = (User) criteria.uniqueResult();
 		Validation.login(user, password);
 		return user;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsers() {
-
-		System.out.println(sessionFactory.getCurrentSession()
-				.createCriteria(User.class).list());
-		System.out.println("sessionFactory: " + sessionFactory);
-		System.out.println("sessionFactory.getCurrentSession(): "
-				+ sessionFactory.getCurrentSession());
-		System.out.println();
-
 		return sessionFactory.getCurrentSession().createCriteria(User.class)
 				.list();
 	}

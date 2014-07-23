@@ -23,6 +23,7 @@
 	<mvc:default-servlet-handler />
 
 	<context:annotation-config />
+	<context:component-scan base-package="org.training.itracker.controllers" />
 	<context:component-scan base-package="org.training.itracker.dao" />
 	<context:component-scan base-package="org.training.itracker.service" />
 
@@ -63,11 +64,11 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
  
+ 	<bean id="contextUtils" class="org.training.itracker.listener.ServletContextUtils" />
+ 
 	<bean id="derbypar" class="java.lang.String">
 		<constructor-arg value="jdbc:derby:" />
 	</bean>
-
-	<bean id="contextUtils" class="org.training.itracker.listener.ServletContextUtils" />
 
 	<bean id="realPath" factory-bean="contextUtils" factory-method="getRealPath" />
 
@@ -83,19 +84,14 @@
 		<constructor-arg ref="dbName" />
 	</bean>
 
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">		
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="org.training.itracker.beans" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.DerbyTenSevenDialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
 	</bean>
@@ -108,6 +104,10 @@
 		</property>
 		<property name="username" value="poweruser" />
 		<property name="password" value="poweruser" />
+	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 </beans>

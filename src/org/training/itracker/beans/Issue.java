@@ -19,6 +19,7 @@ import org.hibernate.annotations.GenerationTime;
 
 @Entity
 public class Issue implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -198,4 +199,17 @@ public class Issue implements Serializable {
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
 	}
+
+	@Override
+	public String toString() {
+		return "Issue [id=" + id + ", dateCreation=" + dateCreation
+				+ ", userCreation=" + userCreation + ", modifyDate="
+				+ modifyDate + ", userModify=" + userModify + ", summary="
+				+ summary + ", description=" + description + ", status="
+				+ status + ", resolution=" + resolution + ", type=" + type
+				+ ", priority=" + priority + ", project=" + project
+				+ ", build=" + build + ", assignee=" + assignee
+				+ ", commentList=" + commentList + "]";
+	}
+
 }

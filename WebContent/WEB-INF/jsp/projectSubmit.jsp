@@ -49,7 +49,7 @@ $(document).ready(function() {
 							<div class="form-group">
                                 <label for="build" class="col-md-2 control-label">Build</label>
                                 <div class="col-md-6">
-									<input name="build" type="text" class="form-control" id="build" placeholder="Enter build name"
+									<input name="buildName" type="text" class="form-control" id="build" placeholder="Enter build name"
 									required data-bv-notempty-message="build name is required">
                                 </div>
                             </div>

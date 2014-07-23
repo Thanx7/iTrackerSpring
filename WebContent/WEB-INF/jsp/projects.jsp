@@ -20,7 +20,6 @@
 
                 <c:forEach var="project" items="${projects}" >
                 <tr>
-                
 	           		<td class="l"><a href="project?id=${project.id}">${project.projectName}</a></td>
     	            <td class="l">${project.manager.firstName} ${project.manager.lastName}</td>
         	        <td class="l">${project.description}</td>

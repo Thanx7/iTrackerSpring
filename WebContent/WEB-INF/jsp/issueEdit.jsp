@@ -296,7 +296,9 @@ $(document).ready(function() {
                                 	<input type="submit" class="btn btn-primary" value="Update">
                                 </div>
                             </div>
-
+							
+							<input type="hidden" name="id" value="${issue.id}" />
+							
                             </form>
                             
                         </div>
