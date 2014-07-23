@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.training.itracker.beans.Comment;
@@ -51,9 +52,9 @@ public class IssueController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/issue")
+	@RequestMapping(value = "/issue/{issueId}")
 	public String beforeUpdate(HttpSession session, ModelMap model,
-			@RequestParam(value = "id") Issue issue) {
+			@PathVariable("issueId") Issue issue) {
 
 		model.addAttribute("issue", issue);
 

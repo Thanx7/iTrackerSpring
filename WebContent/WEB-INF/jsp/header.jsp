@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="navbar navbar-static-top">
     <div class="navbar-inner">
         <div class="container">
@@ -15,6 +18,10 @@
                       <span>${success}</span>
                      </span>
                 	</c:if>
+               
+               		<span>
+    					<a href="?lang=en">en</a>|<a href="?lang=ru">ru</a>
+					</span>
                
                     <c:if test="${not empty user}">
                         <div class="form-inline pull-right">

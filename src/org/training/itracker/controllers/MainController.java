@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.training.itracker.beans.Issue;
@@ -88,18 +89,18 @@ public class MainController {
 		} catch (DAOException e) {
 			session.setAttribute(MessageConstants.ERROR_MESSAGE, e.getMessage());
 		}
-		return "main";
+		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/logout")
+	@RequestMapping(value = "/**/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute(Constants.ATTRIBUTE_USER, null);
-		return "redirect:main";
+		return "redirect:/main";
 	}
 
-	@RequestMapping(value = "/issueDetails")
+	@RequestMapping(value = "/issueDetails/{issueId}")
 	public String main(HttpSession session, ModelMap model,
-			@RequestParam(value = "id") Issue issue) {
+			@PathVariable("issueId") Issue issue) {
 
 		model.addAttribute("issue", issue);
 

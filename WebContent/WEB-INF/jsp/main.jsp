@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -25,22 +28,22 @@ $(document).ready(function() {
 
             <table class="table table-striped table-hover table-view">
                 <tr>
-                    <td class="l"><a href="main?sort=id">Id</a></td>
-                    <td class="l"><a href="main?sort=priority">Priority</a></td>
-                    <td class="l"><a href="main?sort=assignee">Assignee</a></td>
-                    <td class="l"><a href="main?sort=type">Type</a></td>
-                    <td class="l"><a href="main?sort=status">Status</a></td>
-                    <td class="l"><a href="main?sort=summary">Summary</a></td>
+                    <td class="l"><a href="main?sort=id"><spring:message code="label.id"/></a></td>
+                    <td class="l"><a href="main?sort=priority"><spring:message code="label.priority"/></a></td>
+                    <td class="l"><a href="main?sort=assignee"><spring:message code="label.assignee"/></a></td>
+                    <td class="l"><a href="main?sort=type"><spring:message code="label.type"/></a></td>
+                    <td class="l"><a href="main?sort=status"><spring:message code="label.status"/></a></td>
+                    <td class="l"><a href="main?sort=summary"><spring:message code="label.summary"/></a></td>
                 </tr>
 
                 <c:forEach var="issue" items="${issueList}" >
                 <tr>
                 
 					<c:if test="${not empty user}">
-                 		<td class="l"><a href="issue?id=${issue.id}">${issue.id}</a></td>
+                 		<td class="l"><a href="issue/${issue.id}/">${issue.id}</a></td>
                     </c:if>
 					<c:if test="${empty user}">
-                 		<td class="l"><a href="issueDetails?id=${issue.id}">${issue.id}</a></td>
+                 		<td class="l"><a href="issueDetails/${issue.id}/">${issue.id}</a></td>
                     </c:if>
 
                  <td class="l">${issue.priority}</td>

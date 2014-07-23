@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -87,19 +90,19 @@ $(document).ready(function() {
                             <form id="profileForm" method="post" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/updateIssue">
 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Id</label>
+                                    <label class="col-md-2 control-label"><spring:message code="label.id"/></label>
                                         <p class="form-control-static">${issue.id}</p>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Create Date</label>
+                                    <label class="col-md-2 control-label"><spring:message code="label.cr_date"/></label>
                                     <div class="col-md-6">
                                         <p class="form-control-static">${issue.dateCreation}</p>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Created By</label>
+                                    <label class="col-md-2 control-label"><spring:message code="label.cr_by"/></label>
                                     <div class="col-md-6">
                                         <p class="form-control-static">id=${issue.userCreation.id}: ${issue.userCreation.firstName} ${issue.userCreation.lastName}</p>
                                     </div>
@@ -107,14 +110,14 @@ $(document).ready(function() {
 
                                 <c:if test="true">
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">Modify Date</label>
+                                        <label class="col-md-2 control-label"><spring:message code="label.mod_date"/></label>
                                         <div class="col-md-6">
                                             <p class="form-control-static">${issue.modifyDate}</p>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label">Modified By</label>
+                                        <label class="col-md-2 control-label"><spring:message code="label.mod_by"/></label>
                                         <div class="col-md-6">
                                         	<c:if test="${not empty issue.userModify.id}">
                                         		<p class="form-control-static">id=${issue.userModify.id}: ${issue.userModify.firstName} ${issue.userModify.lastName}</p>
@@ -127,7 +130,7 @@ $(document).ready(function() {
                                 </c:if>
                                     
                                 <div class="form-group">
-                                    <label for="summaryValue" class="col-md-2 control-label">Summary</label>
+                                    <label for="summaryValue" class="col-md-2 control-label"><spring:message code="label.summary"/></label>
                                     <div class="col-md-6">
                                         <input name="summary" type="text" class="form-control" value="${issue.summary}"
                                         required data-bv-notempty-message="summary is required">
@@ -135,7 +138,7 @@ $(document).ready(function() {
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-2 control-label">Description</label>
+                                    <label class="col-md-2 control-label"><spring:message code="label.description"/></label>
                                     <div class="col-md-6">
                                         <textarea name="description" class="form-control" rows="3"
                                         required data-bv-notempty-message="description is required">${issue.description}</textarea>
@@ -143,7 +146,7 @@ $(document).ready(function() {
                                 </div>
                                 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Status</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.status"/></label>
                                 <div class="col-md-4">
                                     <select id="dropdownStatus" name="status" class="form-control">
                                     	<c:if test="${issue.status.id eq 1 || issue.status.id eq 6}">
@@ -177,7 +180,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Resolution</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.resolution"/></label>
                                 <div class="col-md-4">
                                     <select id="dropdownResolution" name="resolution" class="form-control" disabled>
                                     	<c:if test="${issue.status.id lt 3}">
@@ -205,7 +208,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label for="typeValue" class="col-md-2 control-label">Type</label>
+                                <label for="typeValue" class="col-md-2 control-label"><spring:message code="label.type"/></label>
                                 <div class="col-md-4">
                                     <select name="type" class="form-control">
                                         <option value="1">1</option>
@@ -216,7 +219,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Priority</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.priority"/></label>
                                 <div class="col-md-4">
                                     <select name="priority" class="form-control">
                                         <option value="1">1</option>
@@ -227,7 +230,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Project</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.project"/></label>
                                 <div class="col-md-4">
                                     <select id="dropdown1" name="project" class="form-control">
 					                   	<c:forEach var="project" items="${projects}">
@@ -242,7 +245,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Build Found</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.build_found"/></label>
                                 <div class="col-md-4">
                                     <select id="dropdown2" name="build" class="form-control">
                                     	<c:forEach var="build" items="${issue.project.buildList}">
@@ -257,7 +260,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Assignee</label>
+                                <label class="col-md-2 control-label"><spring:message code="label.assignee"/></label>
                                 <div class="col-md-4">
                                     <select name="assignee" class="form-control">
                                     	<option selected="selected" value="0"></option>
@@ -273,7 +276,7 @@ $(document).ready(function() {
                             </div>
 							
 							<div class="form-group">
-                            	<label class="col-md-2 control-label">Comment</label>
+                            	<label class="col-md-2 control-label"><spring:message code="label.add_comment"/></label>
                                     <div class="col-md-6">
                                        <textarea name="comment" class="form-control" rows="2" placeholder="Enter comment"></textarea>
                                     </div>
@@ -283,9 +286,9 @@ $(document).ready(function() {
                             		<ul class="comments-list">
                                 		<c:forEach items="${issue.commentList}" var="comment">
         	                            <li class="comment">
-               	                            Added By: ${comment.user.firstName} ${comment.user.lastName}<br>
-                      	                    Add Date: ${comment.createDate}<br>
-  	                                        Comment: ${comment.text}<br>
+               	                            <spring:message code="label.cr_by"/>: ${comment.user.firstName} ${comment.user.lastName}<br>
+                                            <spring:message code="label.cr_date"/>: ${comment.createDate}<br>
+                                            <spring:message code="label.comment"/>: ${comment.text}<br>
             	                        </li>
                                 		</c:forEach>
                             		</ul>   
