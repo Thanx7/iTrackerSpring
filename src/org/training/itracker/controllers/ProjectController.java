@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.training.itracker.beans.Build;
@@ -45,9 +46,9 @@ public class ProjectController {
 		return "projects";
 	}
 
-	@RequestMapping(value = "/project")
+	@RequestMapping(value = "/project/{id}")
 	public String project(HttpSession session,
-			@RequestParam(value = "id") int id) {
+			@PathVariable(value = "id") int id) {
 		Project project = projectService.getProject(id);
 		session.setAttribute(Constants.ATTRIBUTE_PROJECT, project);
 
@@ -78,7 +79,7 @@ public class ProjectController {
 			build.setProject(project);
 			buildService.saveBuild(build);
 		}
-		return "projects";
+		return "forward:/projects";
 	}
 
 	@RequestMapping(value = "/projectSubmit")

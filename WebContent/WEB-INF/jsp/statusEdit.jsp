@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Status</title>
+<title><spring:message code="label.status_edit"/></title>
 <jsp:include page="scripts.jsp"/>
 	
 <script>
@@ -34,7 +34,7 @@ $(document).ready(function() {
  						<form id="profileForm" method="post" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/updateStatus">
  						
 							<div class="form-group">
-                                <label for="nameValue" class="col-md-2 control-label">Name</label>
+                                <label for="nameValue" class="col-md-2 control-label"><spring:message code="label.name"/></label>
                                 <div class="col-md-6">
 									<input name="name" type="text" class="form-control" id="nameValue" value="${status.statusCode}"
 									required data-bv-notempty-message="name is required">
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 							<div class="form-group">
 								<div class="col-md-offset-2 col-md-10">
-									<button type="submit" class="btn btn-primary">Update Status</button>
+									<button type="submit" class="btn btn-primary"><spring:message code="label.update"/></button>
 								</div>
 							</div>
 							

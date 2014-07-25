@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.training.itracker.beans.Status;
@@ -29,9 +30,9 @@ public class StatusController {
 		return "statuses";
 	}
 
-	@RequestMapping(value = "/status")
+	@RequestMapping(value = "/status/{id}")
 	public String statusEdit(HttpSession session,
-			@RequestParam(value = "id") int id) {
+			@PathVariable(value = "id") int id) {
 		Status status = statusService.getStatus(id);
 		session.setAttribute(Constants.ATTRIBUTE_STATUS, status);
 

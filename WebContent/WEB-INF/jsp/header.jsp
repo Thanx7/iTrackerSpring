@@ -6,27 +6,38 @@
     <div class="navbar-inner">
         <div class="container">
             <div class="nav-collapse">
+
+                  <span>
+                     <a href="?lang=en">en</a>|<a href="?lang=ru">ru</a>
+                  </span>
+
+                  <span>
+                  	<spring:message code="label.pagination"/>:
+                    <c:forEach begin="0" end="${pagesCount}" var="val">
+    					<a href="page/${val}/">${val}</a>|
+					</c:forEach>
+                  </span>
                
-                  	<c:if test="${not empty errorMessage}">
-                     <span class="message-body">
-                      <span class="error">${errorMessage}</span>
-                     </span>
+                  <c:if test="${not empty errorMessage}">
+                    <span class="message-body">
+                      <span class="error">
+                      	<spring:message code="label.${errorMessage}" />
+                      </span>
+                    </span>
                 	</c:if>
 
-                  	<c:if test="${not empty success}">
-                     <span class="message-body">
-                      <span>${success}</span>
-                     </span>
+                  <c:if test="${not empty success}">
+                    <span class="message-body">
+                      <span>
+                      	<spring:message code="label.${success}" />
+                      </span>
+                    </span>
                 	</c:if>
-               
-               		<span>
-    					<a href="?lang=en">en</a>|<a href="?lang=ru">ru</a>
-					</span>
                
                     <c:if test="${not empty user}">
                         <div class="form-inline pull-right">
-                            <span>Hello, ${user.firstName} ${user.lastName}</span>
-                            <a href="logout" class="btn" type="logout">Log out</a>
+                            <span><spring:message code="label.welcome"/>, ${user.firstName} ${user.lastName}</span>
+                            <a href="logout" class="btn" type="logout"><spring:message code="label.logout"/></a>
                         </div>
                     </c:if>
                     <c:if test="${empty user}">
@@ -39,7 +50,7 @@
                             	<input class="form-control" name="password" type="password" value="first"
                             		required data-bv-notempty-message="password is required">
                            	</div>                            		
-                            <button class="btn" type="submit">Sign in</button>
+                            <button class="btn" type="submit"><spring:message code="label.sign_in"/></button>
                         </form>
                     </c:if>
 

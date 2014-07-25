@@ -3,14 +3,15 @@ package org.training.itracker.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.CriteriaSpecification;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.training.itracker.beans.Issue;
+import org.training.itracker.constants.Constants;
 
 @Repository
 public class IssueDAOImpl implements IssueDAO {
@@ -25,38 +26,46 @@ public class IssueDAOImpl implements IssueDAO {
 		return (Issue) criteria.uniqueResult();
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Issue> getAllIssues(String sort) {
-		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria = session.createCriteria(Issue.class);
-
-		switch (sort) {
-		case "id":
-			criteria = criteria.addOrder(Order.asc("id"));
-			break;
-		case "priority":
-			criteria = criteria.addOrder(Order.asc("priority"));
-			break;
-		case "assignee":
-			criteria = criteria.addOrder(Order.asc("assignee"));
-			break;
-		case "type":
-			criteria = criteria.addOrder(Order.asc("type"));
-			break;
-		case "status":
-			criteria = criteria.addOrder(Order.asc("status"));
-			break;
-		case "summary":
-			criteria = criteria.addOrder(Order.asc("summary"));
-			break;
-		}
-
-		criteria.setResultTransformer(CriteriaSpecification.DISTINCT_ROOT_ENTITY);
-		return criteria.list();
+	public Integer getIssues() {
+		return sessionFactory
+				.getCurrentSession()
+				.createCriteria(Issue.class)
+				.setResultTransformer(
+						CriteriaSpecification.DISTINCT_ROOT_ENTITY).list()
+				.size();
 	}
 
-	public List<Issue> getAllIssues() {
-		return getAllIssues("id");
+	@SuppressWarnings("unchecked")
+	public List<Issue> getIssues(Integer pageNumber, String sort) {
+		Session session = sessionFactory.getCurrentSession();
+		Query q = null;
+		if (sort == null) {
+			q = session.createQuery("from Issue order by id desc");
+		} else {
+			switch (sort) {
+			case "priority":
+				q = session.createQuery("from Issue order by priority desc");
+				break;
+			case "assignee":
+				q = session.createQuery("from Issue order by assignee desc");
+				break;
+			case "type":
+				q = session.createQuery("from Issue order by type desc");
+				break;
+			case "status":
+				q = session.createQuery("from Issue order by status desc");
+				break;
+			case "summary":
+				q = session.createQuery("from Issue order by summary desc");
+				break;
+			default:
+				q = session.createQuery("from Issue order by id desc");
+				break;
+			}
+		}
+		q.setFirstResult(pageNumber * Constants.ISSUES_ON_PAGE);
+		q.setMaxResults(Constants.ISSUES_ON_PAGE);
+		return q.list();
 	}
 
 	public void saveIssue(Issue issue) {

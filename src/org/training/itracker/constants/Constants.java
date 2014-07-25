@@ -1,6 +1,8 @@
 package org.training.itracker.constants;
 
 public final class Constants {
+	public static final int ISSUES_ON_PAGE = 10;
+
 	public static final String ATTRIBUTE_USER = "user";
 	public static final String ATTRIBUTE_USERS = "users";
 	public static final String ATTRIBUTE_ISSUE_LIST = "issueList";

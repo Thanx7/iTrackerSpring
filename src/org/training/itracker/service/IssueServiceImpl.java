@@ -24,13 +24,13 @@ public class IssueServiceImpl implements IssueService {
 	}
 
 	@Transactional
-	public List<Issue> getAllIssues(String sort) {
-		return issueDAO.getAllIssues(sort);
+	public Integer getIssues() {
+		return issueDAO.getIssues();
 	}
 
 	@Transactional
-	public List<Issue> getAllIssues() {
-		return issueDAO.getAllIssues("id");
+	public List<Issue> getIssues(Integer pageNumber, String sort) {
+		return issueDAO.getIssues(pageNumber, sort);
 	}
 
 	@Transactional

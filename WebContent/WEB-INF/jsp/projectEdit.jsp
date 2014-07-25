@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Project</title>
+<title><spring:message code="label.project_edit"/></title>
 <jsp:include page="scripts.jsp"/>
 	
 <script>
@@ -34,7 +34,7 @@ $(document).ready(function() {
  						<form id="profileForm" method="post" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/updateProject">
  						
 							<div class="form-group">
-                                <label for="nameValue" class="col-md-2 control-label">Name</label>
+                                <label for="nameValue" class="col-md-2 control-label"><spring:message code="label.project_name"/></label>
                                 <div class="col-md-6">
 									<input name="name" type="text" class="form-control" id="nameValue" value="${project.projectName}"
 									required data-bv-notempty-message="name is required">
@@ -42,7 +42,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label for="descriptionValue" class="col-md-2 control-label">Description</label>
+                                <label for="descriptionValue" class="col-md-2 control-label"><spring:message code="label.description"/></label>
                                 <div class="col-md-6">
                                     <textarea name="description" class="form-control" id="descriptionValue" rows="3"
                                     required data-bv-notempty-message="description is required">${project.description}</textarea>
@@ -50,7 +50,7 @@ $(document).ready(function() {
                             </div>
                             
 							<div class="form-group">
-                                <label for="builds" class="col-md-2 control-label">Builds</label>
+                                <label for="builds" class="col-md-2 control-label"><spring:message code="label.builds"/></label>
                                 <div class="col-md-4">
 									<select name="builds" class="form-control" id="builds">
                                         <c:forEach var="build" items="${project.buildList}">
@@ -65,14 +65,14 @@ $(document).ready(function() {
                             </div>
                             
 							<div class="form-group">
-                                <label for="newBuild" class="col-md-4 control-label">New build (optional)</label>
+                                <label for="newBuild" class="col-md-4 control-label"><spring:message code="label.new_build"/></label>
                                 <div class="col-md-4">
 									<input name="newBuild" type="text" class="form-control" id="newBuild">
                                 </div>
                             </div>
                                                             
 							<div class="form-group">
-								<label for="manager" class="col-md-2 control-label">Manager</label>
+								<label for="manager" class="col-md-2 control-label"><spring:message code="label.manager"/></label>
 								<div class="col-md-4">
 									<select name="manager" class="form-control" id="manager">
                                         <c:forEach var="user" items="${users}">
@@ -88,7 +88,7 @@ $(document).ready(function() {
 							
 							<div class="form-group">
 								<div class="col-md-offset-2 col-md-10">
-									<button type="submit" class="btn btn-primary">Update Project</button>
+									<button type="submit" class="btn btn-primary"><spring:message code="label.update"/></button>
 								</div>
 							</div>
 							

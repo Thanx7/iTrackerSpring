@@ -8,9 +8,9 @@ public interface IssueService {
 
 	Issue getIssue(int id);
 
-	List<Issue> getAllIssues();
+	Integer getIssues();
 
-	List<Issue> getAllIssues(String sort);
+	List<Issue> getIssues(Integer pageNumber, String sort);
 
 	void saveIssue(Issue issue);
 

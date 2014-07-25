@@ -31,10 +31,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                             <a role="menuitem" href="${url}/projects">Projects</a>
+                             <a role="menuitem" href="${url}/projects"><spring:message code="label.all_projects"/></a>
                             </li>
                             <li>
-                           	 <a role="menuitem" href="${url}/projectSubmit">Add Project</a>
+                           	 <a role="menuitem" href="${url}/projectSubmit"><spring:message code="label.add_project"/></a>
                             </li>
                         </ul>
                     </li>
@@ -48,10 +48,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                            	<a role="menuitem" href="${url}/resolutions">Resolutions</a>
+                            	<a role="menuitem" href="${url}/resolutions"><spring:message code="label.all_resolutions"/></a>
                             </li>
                             <li>
-                            	<a role="menuitem" href="${url}/resolutionSubmit">Add Resolution</a>
+                            	<a role="menuitem" href="${url}/resolutionSubmit"><spring:message code="label.add_resolution"/></a>
                             </li>
                         </ul>
                     </li>
@@ -63,7 +63,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                            	 <a role="menuitem" href="#">this item is not implemented yet</a>
+                            	 <a role="menuitem" href="#"><spring:message code="label.not_implemented"/></a>
                             </li>
                             <!--  <li>
                             	<a role="menuitem" href="${url}/priority">Search Priority</a>
@@ -81,7 +81,7 @@
                         </a>
                         <ul class="dropdown-menu">
                         	<li>
-                            	 <a role="menuitem" href="#">this item is not implemented yet</a>
+                            	 <a role="menuitem" href="#"><spring:message code="label.not_implemented"/></a>
                             </li>
                             <!--<li>
                             	 <a role="menuitem" href="${url}/type">Search Type</a>

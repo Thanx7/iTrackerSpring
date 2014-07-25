@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Issue Tracker</title>
+<title><spring:message code="label.issue_tracker"/></title>
 <jsp:include page="scripts.jsp"/>
 
 <script>
@@ -28,12 +28,12 @@ $(document).ready(function() {
 
             <table class="table table-striped table-hover table-view">
                 <tr>
-                    <td class="l"><a href="main?sort=id"><spring:message code="label.id"/></a></td>
-                    <td class="l"><a href="main?sort=priority"><spring:message code="label.priority"/></a></td>
-                    <td class="l"><a href="main?sort=assignee"><spring:message code="label.assignee"/></a></td>
-                    <td class="l"><a href="main?sort=type"><spring:message code="label.type"/></a></td>
-                    <td class="l"><a href="main?sort=status"><spring:message code="label.status"/></a></td>
-                    <td class="l"><a href="main?sort=summary"><spring:message code="label.summary"/></a></td>
+                    <td class="l"><a href="main/id/"><spring:message code="label.id"/></a></td>
+                    <td class="l"><a href="main/priority/"><spring:message code="label.priority"/></a></td>
+                    <td class="l"><a href="main/assignee/"><spring:message code="label.assignee"/></a></td>
+                    <td class="l"><a href="main/type/"><spring:message code="label.type"/></a></td>
+                    <td class="l"><a href="main/status/"><spring:message code="label.status"/></a></td>
+                    <td class="l"><a href="main/summary/"><spring:message code="label.summary"/></a></td>
                 </tr>
 
                 <c:forEach var="issue" items="${issueList}" >

@@ -1,3 +1,12 @@
+issueTracker-3.1
+Important:
+
+1. Spring MVC + Hibernate
+2. Spring MVC Internationalization (i18n)
+3. Pagination
+
+
+
 issueTracker-3.0
 Important:
 Spring MVC implemented

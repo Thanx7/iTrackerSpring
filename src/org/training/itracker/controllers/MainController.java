@@ -1,6 +1,5 @@
 package org.training.itracker.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -43,11 +42,8 @@ public class MainController {
 	@Autowired
 	private ProjectService projectService;
 
-	private final static int ISSUES_ON_PAGE = 10;
-
-	@RequestMapping(value = { "/index", "/", "/main" })
-	public String main(HttpSession session,
-			@RequestParam(value = "sort", required = false) String sort) {
+	@RequestMapping(value = { "/", "/main" })
+	public String entry(HttpSession session) {
 
 		List<User> users = userService.getAllUsers();
 		session.setAttribute(Constants.ATTRIBUTE_USERS, users);
@@ -55,26 +51,36 @@ public class MainController {
 		List<Status> statuses = statusService.getStatuses();
 		session.setAttribute(Constants.ATTRIBUTE_STATUSES, statuses);
 
-		List<Issue> allIssues;
-		if (sort != null) {
-			allIssues = issueService.getAllIssues(sort);
-		} else {
-			allIssues = issueService.getAllIssues();
+		Integer i;
+		try {
+			i = Integer.parseInt((String) session.getAttribute("page"));
+		} catch (NumberFormatException e) {
+			i = 0;
 		}
 
-		if (allIssues.size() <= ISSUES_ON_PAGE) {
-			session.setAttribute(Constants.ATTRIBUTE_ISSUE_LIST, allIssues);
-		} else {
-			List<Issue> tmpIssuesList = new ArrayList<Issue>();
-			for (int i = allIssues.size() - ISSUES_ON_PAGE; i < allIssues
-					.size(); i++) {
-				tmpIssuesList.add(allIssues.get(i));
-			}
-			session.setAttribute(Constants.ATTRIBUTE_ISSUE_LIST, tmpIssuesList);
-		}
+		List<Issue> issues = issueService.getIssues(i,
+				(String) session.getAttribute("sort"));
+		session.setAttribute(Constants.ATTRIBUTE_ISSUE_LIST, issues);
+
+		Integer issuesCount = issueService.getIssues();
+		int pagesCount = (int) Math.ceil((issuesCount - 1)
+				/ Constants.ISSUES_ON_PAGE);
+		session.setAttribute("pagesCount", pagesCount);
 
 		BackButton.showSubmitHideBack(session);
 		return "main";
+	}
+
+	@RequestMapping(value = "/main/{sort}")
+	public String sort(HttpSession session, @PathVariable("sort") String sort) {
+		session.setAttribute("sort", sort);
+		return "redirect:/main";
+	}
+
+	@RequestMapping(value = "/**/page/{page}")
+	public String page(HttpSession session, @PathVariable("page") String page) {
+		session.setAttribute("page", page);
+		return "redirect:/main";
 	}
 
 	@RequestMapping(value = "/login")

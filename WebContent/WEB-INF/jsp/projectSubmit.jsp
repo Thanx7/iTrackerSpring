@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Project Submit</title>
+<title><spring:message code="label.project_submit"/></title>
 <jsp:include page="scripts.jsp"/>
 	
 <script>
@@ -34,7 +34,7 @@ $(document).ready(function() {
  						<form id="profileForm" method="post" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/saveProject">
  						
 							<div class="form-group">
-                                <label for="nameValue" class="col-md-2 control-label">Name</label>
+                                <label for="nameValue" class="col-md-2 control-label"><spring:message code="label.name"/></label>
                                 <div class="col-md-6">
 									<input name="name" type="text" class="form-control" id="nameValue" placeholder="Enter name"
 									required data-bv-notempty-message="name is required">
@@ -42,7 +42,7 @@ $(document).ready(function() {
                             </div>
 
                             <div class="form-group">
-                                <label for="descriptionValue" class="col-md-2 control-label">Description</label>
+                                <label for="descriptionValue" class="col-md-2 control-label"><spring:message code="label.description"/></label>
                                 <div class="col-md-6">
                                     <textarea name="description" class="form-control" id="descriptionValue" rows="3" placeholder="Enter description"
                                     required data-bv-notempty-message="description is required"></textarea>
@@ -50,7 +50,7 @@ $(document).ready(function() {
                             </div>
                             
 							<div class="form-group">
-                                <label for="build" class="col-md-2 control-label">Build</label>
+                                <label for="build" class="col-md-2 control-label"><spring:message code="label.build"/></label>
                                 <div class="col-md-6">
 									<input name="buildName" type="text" class="form-control" id="build" placeholder="Enter build name"
 									required data-bv-notempty-message="build name is required">
@@ -58,7 +58,7 @@ $(document).ready(function() {
                             </div>
                             
 							<div class="form-group">
-								<label for="manager" class="col-md-2 control-label">Manager</label>
+								<label for="manager" class="col-md-2 control-label"><spring:message code="label.manager"/></label>
 								<div class="col-md-4">
 									<select name="manager" class="form-control" id="manager">
                                         <c:forEach var="user" items="${users}">
@@ -70,7 +70,7 @@ $(document).ready(function() {
 							
 							<div class="form-group">
 								<div class="col-md-offset-2 col-md-10">
-									<button type="submit" class="btn btn-primary">Add Project</button>
+									<button type="submit" class="btn btn-primary"><spring:message code="label.add_project"/></button>
 								</div>
 							</div>
 							

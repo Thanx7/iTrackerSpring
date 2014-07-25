@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Resolution</title>
+<title><spring:message code="label.edit_resolution"/></title>
 <jsp:include page="scripts.jsp"/>
 	
 <script>
@@ -34,7 +34,7 @@ $(document).ready(function() {
  						<form id="profileForm" method="post" class="form-horizontal" role="form" action="${pageContext.request.contextPath}/updateResolution">
  						
 							<div class="form-group">
-                                <label for="nameValue" class="col-md-2 control-label">Name</label>
+                                <label for="nameValue" class="col-md-2 control-label"><spring:message code="label.name"/></label>
                                 <div class="col-md-6">
 									<input name="name" type="text" class="form-control" id="nameValue" value="${resolution.resolutionName}"
 									required data-bv-notempty-message="name is required">
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 							<div class="form-group">
 								<div class="col-md-offset-2 col-md-10">
-									<button type="submit" class="btn btn-primary">Update Resolution</button>
+									<button type="submit" class="btn btn-primary"><spring:message code="label.update_resolution"/></button>
 								</div>
 							</div>
 							

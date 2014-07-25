@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Resolutions</title>
+<title><spring:message code="label.all_resolutions"/></title>
 <jsp:include page="scripts.jsp"/>
 </head>
 
@@ -16,13 +16,12 @@
 
             <table class="table table-striped table-hover table-view">
                 <tr>
-                    <td class="l">Name</td>
+                    <td class="l"><spring:message code="label.name"/></td>
                 </tr>
 
                 <c:forEach var="resolution" items="${resolutions}" >
                 <tr>
-                
-	           		<td class="l"><a href="resolution?id=${resolution.id}">${resolution.resolutionName}</a></td>
+	           		<td class="l"><a href="resolution/${resolution.id}/">${resolution.resolutionName}</a></td>
                 </tr>
                 </c:forEach>
             </table>

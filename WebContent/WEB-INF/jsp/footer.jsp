@@ -4,6 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
  <div class="container container-add">
     <footer>
-        <p class="text-center">Developed by Aliaksandr Doubeikovsky, e-mail: Aliaksandr_Doubeikovsky@epam.com</p>
+        <p class="text-center"><spring:message code="label.developed"/></p>
     </footer>
 </div>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Issue Tracker</title>
+<title><spring:message code="label.issue_details"/></title>
 <jsp:include page="scripts.jsp"/>
 
 <script>
