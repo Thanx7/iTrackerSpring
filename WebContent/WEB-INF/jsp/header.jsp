@@ -22,6 +22,7 @@
                     <span class="message-body">
                       <span class="error">
                       	<spring:message code="label.${errorMessage}" />
+                      	<c:remove var="errorMessage" scope="session" /> 
                       </span>
                     </span>
                 	</c:if>
