@@ -84,7 +84,7 @@ public class MainController {
 	}
 
 	@RequestMapping(value = "/login")
-	public String login(HttpSession session, ModelMap model,
+	public String login(HttpSession session,
 			@RequestParam(value = "email") String email,
 			@RequestParam(value = "password") String password) {
 
